@@ -11,11 +11,6 @@ async function add(project) {
   const [id] = await db('projects').insert(project);
   return findById(id);
 }
-// function add(project){
-//   return db('projects').insert(project, 'id').then(ids => {
-//     return findById(ids[0])
-//   })
-// }
 
 function find() {
   return db('projects');

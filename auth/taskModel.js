@@ -26,9 +26,9 @@ function findTasks(id) {
     .where('projectId', id)
     .join('projects', 'tasks.projectId', 'projects.id')
     .select(
-      'projects.name',
-      'projects.description',
-      'tasks.id',
-      'tasks.description',
+      'projects.name as ProjectName',
+      'projects.description as ProjectDescription',
+      'tasks.id as TaskId',
+      'tasks.description as TaskDescription',
     );
 }
