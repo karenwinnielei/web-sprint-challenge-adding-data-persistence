@@ -1,7 +1,7 @@
-const router = require('express').Router()
+const router = require('express').Router();
 
-const Projects = require('./projectModel')
-const Tasks = require('./taskModel')
+const Projects = require('./projectModel');
+const Tasks = require('./taskModel');
 
 router.get('/', (req, res) => {
   Projects.find()
@@ -12,11 +12,16 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-const {id} = req.params
+  const { id } = req.params;
   Projects.findById(id)
     .then((project) => {
-      console.log(project)
-      res.status(200).json(project);
+      if (project) {
+        res.status(200).json(project);
+      } else {
+        res.status(404).json({
+          message: 'could not find project with given id',
+        });
+      }
     })
     .catch((err) => res.status(500).json(err));
 });
@@ -36,13 +41,13 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:id/tasks', (req, res) => {
-  const {id} = req.params
+  const { id } = req.params;
   Tasks.findTasks(id)
-    .then((project) => {
-      res.status(200).json(project);
+    .then((task) => {
+      res.status(200).json(task);
     })
     .catch((err) => res.status(500).json(err));
-})
+});
 
 router.post('/:id/tasks', (req, res) => {
   const taskData = req.body;
@@ -52,9 +57,7 @@ router.post('/:id/tasks', (req, res) => {
       res.status(201).json(task);
     })
     .catch((err) => {
-      res
-        .status(500)
-        .json({ message: 'Failed to create new task' });
+      res.status(500).json({ message: 'Failed to create new task' });
     });
 });
 
@@ -62,4 +65,4 @@ router.get('/test', (req, res) => {
   res.send('yes it is working');
 });
 
-module.exports = router
+module.exports = router;
