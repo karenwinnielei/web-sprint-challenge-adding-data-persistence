@@ -7,8 +7,8 @@ module.exports = {
   findById,
 }
 
-async function add(item){
-  const [id] = await db('projects').insert(item)
+async function add(project){
+  const [id] = await db('projects').insert(project)
   return findById(id)
 }
 function find(){
