@@ -1,19 +1,19 @@
 const router = require('express').Router()
 
 const Projects = require('./projectModel')
-const Resources = require('./resourceModel')
 const Tasks = require('./taskModel')
 
-// router.get('/', (req, res) => {
-//   Projects.find()
-//     .then((project) => {
-//       res.status(200).json(project);
-//     })
-//     .catch((err) => res.status(500).json(err));
-// });
 router.get('/', (req, res) => {
-
   Projects.find()
+    .then((project) => {
+      res.status(200).json(project);
+    })
+    .catch((err) => res.status(500).json(err));
+});
+
+router.get('/:id', (req, res) => {
+const {id} = req.params
+  Projects.findById(id)
     .then((project) => {
       console.log(project)
       res.status(200).json(project);
@@ -32,28 +32,6 @@ router.post('/', (req, res) => {
       res
         .status(500)
         .json({ message: 'Failed to create new project' });
-    });
-});
-
-router.get('/resources', (req, res) => {
-  Resources.find()
-    .then((resource) => {
-      res.status(200).json(resource);
-    })
-    .catch((err) => res.status(500).json(err));
-});
-
-router.post('/resources', (req, res) => {
-  const resourceData = req.body;
-
-  Resources.add(resourceData)
-    .then((resource) => {
-      res.status(201).json(resource);
-    })
-    .catch((err) => {
-      res
-        .status(500)
-        .json({ message: 'Failed to create new resource' });
     });
 });
 

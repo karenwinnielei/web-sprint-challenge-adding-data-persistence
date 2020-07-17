@@ -17,6 +17,6 @@ function find() {
 function findBy(filter) {
   return db('resources').where(filter);
 }
-function findById() {
+function findById(id) {
   return db('resources').where({ id }).first();
 }

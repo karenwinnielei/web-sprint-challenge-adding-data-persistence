@@ -18,7 +18,7 @@ function find() {
 function findBy(filter) {
   return db('tasks').where(filter);
 }
-function findById() {
+function findById(id) {
   return db('tasks').where({ id }).first();
 }
 function findTasks(id) {

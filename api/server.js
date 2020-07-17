@@ -1,5 +1,6 @@
 const express = require('express')
 const projectRouter = require('../auth/projectRouter')
+const resourceRouter = require('../auth/resourceRouter')
 const helmet = require('helmet')
 const morgan = require('morgan')
 const cors = require('cors')
@@ -12,6 +13,7 @@ server.use(morgan('dev'));
 server.use(cors());
 
 server.use('/api/projects', projectRouter)
+server.use('/api/resources', resourceRouter)
 
 server.get('/', (req, res) => {
   data = {
