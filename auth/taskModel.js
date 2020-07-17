@@ -5,6 +5,7 @@ module.exports = {
   find,
   findBy,
   findById,
+  findTasks
 };
 
 async function add(task) {
@@ -19,4 +20,15 @@ function findBy(filter) {
 }
 function findById() {
   return db('tasks').where({ id }).first();
+}
+function findTasks(id) {
+  return db('tasks')
+    .where('projectId', id)
+    .join('projects', 'tasks.projectId', 'projects.id')
+    .select(
+      'projects.name',
+      'projects.description',
+      'tasks.id',
+      'tasks.description',
+    );
 }
