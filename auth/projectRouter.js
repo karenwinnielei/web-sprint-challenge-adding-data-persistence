@@ -16,7 +16,15 @@ router.get('/:id', (req, res) => {
   Projects.findById(id)
     .then((project) => {
       if (project) {
-        res.status(200).json(project);
+        const test = Boolean(project.completed);
+
+        console.log(test);
+
+        res.status(200).json({
+          projectId: `${project.id}`,
+          name: `${project.name}`,
+          completed: test
+        });
       } else {
         res.status(404).json({
           message: 'could not find project with given id',

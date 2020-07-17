@@ -21,4 +21,3 @@ function findBy(filter) {
 function findById(id) {
   return db('projects').where({ id }).first();
 }
-
