@@ -18,24 +18,24 @@ In this project you will be given a set of requirements and must design a databa
 
 A `project` is what needs to be done. We want to store the following data about a `project`:
 
-- [ ] a unique ID.
-- [ ] a name. This column is required.
-- [ ] a description.
+- [x] a unique ID.
+- [x] a name. This column is required.
+- [x] a description.
 - [ ] a boolean that indicates if the project has been completed. This column cannot be NULL, the default value should be `false`.
 
 A `resource` is anything needed to complete a project, some examples are: a person, a tool, a meeting room or a software license. We want to store the following data about a `resource`:
 
-- [ ] a unique ID.
-- [ ] a name. This column is required.
-- [ ] a description.
+- [x] a unique ID.
+- [x] a name. This column is required.
+- [x] a description.
 
 The database should not allow resources with duplicate names.
 
 A `task` one of the steps needed to complete the project. We want to store the following data about an `task`.
 
-- [ ] a unique ID.
-- [ ] a description of what needs to be done. This column is required.
-- [ ] a notes column to add additional information.
+- [x] a unique ID.
+- [x] a description of what needs to be done. This column is required.
+- [x] a notes column to add additional information.
 - [ ] a boolean that indicates if the task has been completed. This column cannot be NULL, the default value should be `false`.
 
 ### Commits
@@ -48,11 +48,20 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain the difference between `Relational Databases` and `SQL`.
 
+  - relational databases are databases that store "related" data
+  - SQL is short for Structured Query Language and is the standard language used to manage databases and the data within them. It is the de facto way to interact with a database.
+
 2. Why do tables need a `primary key`?
+
+  - A primary key is a way to identify each entry in the database uniquely. It is most often represented as a auto-incrementing integer called id or [tablename]Id.
 
 3. What is the name given to a table column that references the primary key on another table.
 
+  - Foreign keys are a type of table field used for creating links between tables. Like primary keys, they are most often integers that identify (rather than store) data. However, whereas a primary key is used to id rows in a table, foreign keys are used to connect a record in one table to a record in a second table.
+
 4. What do we need in order to have a _many to many_ relationship between two tables.
+
+  - a third table
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
